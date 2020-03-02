@@ -1,0 +1,183 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateSharks (20190927142853)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "sharks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "facts" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190927142853_create_sharks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190927142853"]]
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreatePosts (20190927143639)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "shark_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_366380e067"
+FOREIGN KEY ("shark_id")
+  REFERENCES "sharks" ("id")
+)[0m
+  ↳ db/migrate/20190927143639_create_posts.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_posts_on_shark_id" ON "posts" ("shark_id")[0m
+  ↳ db/migrate/20190927143639_create_posts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190927143639"]]
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-02-28 10:30:28.679880"], ["updated_at", "2020-02-28 10:30:28.679880"]]
+  ↳ bin/rails:9
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2020-02-28 11:31:56 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/nejm/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /opt/lampp/htdocs/rails-sidekiq/public/packs
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 6840ms (Views: 6835.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-02 22:04:25 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/nejm/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 818ms (Views: 814.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sharks" for ::1 at 2020-03-02 22:04:46 +0100
+Processing by SharksController#index as HTML
+  Rendering sharks/index.html.erb within layouts/sharks
+  [1m[36mShark Load (0.2ms)[0m  [1m[34mSELECT "sharks".* FROM "sharks"[0m
+  ↳ app/views/sharks/index.html.erb:15
+  Rendered sharks/index.html.erb within layouts/sharks (3.3ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/application.html.erb (13.9ms)
+Completed 200 OK in 38ms (Views: 19.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/sharks/new" for ::1 at 2020-03-02 22:04:49 +0100
+Processing by SharksController#new as HTML
+Filter chain halted as #<Proc:0x00007f903058b480@/home/nejm/.rvm/gems/ruby-2.5.1/gems/actionpack-5.2.3/lib/action_controller/metal/http_authentication.rb:72> rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/sharks/new" for ::1 at 2020-03-02 22:04:51 +0100
+Processing by SharksController#new as HTML
+Filter chain halted as #<Proc:0x00007f903058b480@/home/nejm/.rvm/gems/ruby-2.5.1/gems/actionpack-5.2.3/lib/action_controller/metal/http_authentication.rb:72> rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2020-03-02 22:04:55 +0100
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_navigation.html.erb (1.7ms)
+Completed 200 OK in 64ms (Views: 60.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for ::1 at 2020-03-02 22:04:56 +0100
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 52ms (Views: 48.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sharks" for ::1 at 2020-03-02 22:04:57 +0100
+Processing by SharksController#index as HTML
+  Rendering sharks/index.html.erb within layouts/sharks
+  [1m[36mShark Load (0.6ms)[0m  [1m[34mSELECT "sharks".* FROM "sharks"[0m
+  ↳ app/views/sharks/index.html.erb:15
+  Rendered sharks/index.html.erb within layouts/sharks (6.3ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/_navigation.html.erb (2.4ms)
+  Rendered layouts/application.html.erb (57.1ms)
+Completed 200 OK in 79ms (Views: 74.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/sharks" for ::1 at 2020-03-02 22:05:33 +0100
+Processing by SharksController#index as HTML
+  Rendering sharks/index.html.erb within layouts/sharks
+  [1m[36mShark Load (0.2ms)[0m  [1m[34mSELECT "sharks".* FROM "sharks"[0m
+  ↳ app/views/sharks/index.html.erb:15
+  Rendered sharks/index.html.erb within layouts/sharks (2.9ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/_navigation.html.erb (0.6ms)
+  Rendered layouts/application.html.erb (23.2ms)
+Completed 200 OK in 35ms (Views: 32.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/sharks/new" for ::1 at 2020-03-02 22:06:37 +0100
+Processing by SharksController#new as HTML
+Filter chain halted as #<Proc:0x00007f903058b480@/home/nejm/.rvm/gems/ruby-2.5.1/gems/actionpack-5.2.3/lib/action_controller/metal/http_authentication.rb:72> rendered or redirected
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/sharks/new" for ::1 at 2020-03-02 22:06:49 +0100
+Processing by SharksController#new as HTML
+  Rendering sharks/new.html.erb within layouts/sharks
+  Rendered sharks/_form.html.erb (23.6ms)
+  Rendered sharks/new.html.erb within layouts/sharks (25.8ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/application.html.erb (16.2ms)
+Completed 200 OK in 62ms (Views: 44.9ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/sharks" for ::1 at 2020-03-02 22:11:09 +0100
+Processing by SharksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zHbE7B21+vlTLZBQS9Af9wDbwkG8y5pnug5D/EtDGr2nDJEICD7x5ngCAid0jf53LKRvt8YixIgMB5m8DlfjSA==", "shark"=>{"name"=>"Great White", "facts"=>"Scary"}, "commit"=>"Create Shark"}
+Filter chain halted as #<Proc:0x00007f903058b480@/home/nejm/.rvm/gems/ruby-2.5.1/gems/actionpack-5.2.3/lib/action_controller/metal/http_authentication.rb:72> rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/sharks" for ::1 at 2020-03-02 22:11:09 +0100
+Processing by SharksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zHbE7B21+vlTLZBQS9Af9wDbwkG8y5pnug5D/EtDGr2nDJEICD7x5ngCAid0jf53LKRvt8YixIgMB5m8DlfjSA==", "shark"=>{"name"=>"Great White", "facts"=>"Scary"}, "commit"=>"Create Shark"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/sharks_controller.rb:30
+  [1m[36mShark Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM "sharks" WHERE "sharks"."name" = ? LIMIT ?[0m  [["name", "Great White"], ["LIMIT", 1]]
+  ↳ app/controllers/sharks_controller.rb:30
+  [1m[36mShark Create (2.0ms)[0m  [1m[32mINSERT INTO "sharks" ("name", "facts", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Great White"], ["facts", "Scary"], ["created_at", "2020-03-02 21:11:09.437234"], ["updated_at", "2020-03-02 21:11:09.437234"]]
+  ↳ app/controllers/sharks_controller.rb:30
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/sharks_controller.rb:30
+Redirected to http://localhost:3000/sharks/1
+Completed 302 Found in 19ms (ActiveRecord: 10.0ms)
+
+
+Started GET "/sharks/1" for ::1 at 2020-03-02 22:11:09 +0100
+Processing by SharksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mShark Load (0.1ms)[0m  [1m[34mSELECT  "sharks".* FROM "sharks" WHERE "sharks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sharks_controller.rb:67
+  Rendering sharks/show.html.erb within layouts/sharks
+  Rendered sharks/_posts.html.erb (30.6ms)
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."shark_id" = ?[0m  [["shark_id", 1]]
+  ↳ app/views/sharks/_all.html.erb:1
+  Rendered sharks/_all.html.erb (1.3ms)
+  Rendered sharks/show.html.erb within layouts/sharks (33.9ms)
+  Rendering layouts/application.html.erb
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/application.html.erb (23.7ms)
+Completed 200 OK in 64ms (Views: 60.4ms | ActiveRecord: 0.8ms)
+
+
